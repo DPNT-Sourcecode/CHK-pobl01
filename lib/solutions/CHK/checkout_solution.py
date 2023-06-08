@@ -58,6 +58,8 @@ def checkout(skus):
     discount_two_b = sku_cound["B"] // discount_thresholds["twoBs"]
     sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
 
+    total_price = sum(sku_prices.values())
+
     #calculate_discount()
     #for sku in allowed_items:
     #    item_count = find_sku(sku, skus)
@@ -91,6 +93,7 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
 
