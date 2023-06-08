@@ -9,7 +9,7 @@ def calculate_discount(discount, sku_count, discount_threshold):
 def count_skus(skus):
     unique_skus = set(skus)
     res = {}
-    for sku in skus:
+    for sku in unique_skus:
         res[sku] = skus.count(sku)
     return res
 
@@ -41,22 +41,25 @@ def checkout(skus):
         total_price += sku_prices[sku]
     print(sku_prices)
 
-    discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
-    sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
-    #sku_count["A"] -= discount_five_a
+    if "A" in sku_count:
+        discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
+        sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
+        #sku_count["A"] -= discount_five_a
 
-    discount_three_a = (sku_count["A"] - discount_five_a) // discount_thresholds["threeAs"]
-    sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
-    #sku_count["A"] -= discount_three_a
+        discount_three_a = (sku_count["A"] - discount_five_a) // discount_thresholds["threeAs"]
+        sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
+        #sku_count["A"] -= discount_three_a
 
-    discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
-    sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
-    if sku_prices["B"] < 0:
-        sku_prices["B"] = 0
-    sku_count["B"] -= discount_two_e
+    if "E" in sku_count:
+        discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
+        sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
+        if sku_prices["B"] < 0:
+            sku_prices["B"] = 0
+        sku_count["B"] -= discount_two_e
 
-    discount_two_b = sku_cound["B"] // discount_thresholds["twoBs"]
-    sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
+    if "B" in sku_count:
+        discount_two_b = sku_count["B"] // discount_thresholds["twoBs"]
+        sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
 
     total_price = sum(sku_prices.values())
 
@@ -93,6 +96,7 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
 
