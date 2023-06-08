@@ -21,7 +21,7 @@ def checkout(skus):
     for sku in allowed_items:
         item_count = find_sku(sku, skus)
         item_price = item_count * allowed_items[sku]
-        print("item price",item_price)
+        print(f"item price {sku}",item_price)
 
         if sku == "A":
             discount_count = item_count // 5
@@ -40,16 +40,17 @@ def checkout(skus):
 
         if sku == "E" and "B" in skus:
             discount = allowed_items["B"] * (item_count // 2)
-            print("discount",discount)
-            print("item price",item_price)
+            #print("discount",discount)
+            #print("item price",item_price)
             item_price -= discount
-            print("item price",item_price)
+            #print("item price",item_price)
 
         total_price += item_price
     return total_price
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
 
