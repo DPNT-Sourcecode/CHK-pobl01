@@ -32,7 +32,9 @@ def checkout(skus):
     print(sku_count)
 
     for sku in sku_count:
-        break
+        sku_prices[sku] = sku_count[sku] * sku_price_table[sku]
+        total_price += sku_prices[sku]
+    print(sku_prices)
 
     #for sku in allowed_items:
     #    item_count = find_sku(sku, skus)
@@ -66,6 +68,7 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
 
