@@ -24,8 +24,3 @@ def checkout(skus):
         price_b -= 15 * (item_b // 2)
 
     return price_a + price_b + price_c + price_d
-
-
-
-
-
