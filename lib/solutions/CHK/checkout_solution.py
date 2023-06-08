@@ -3,18 +3,26 @@ import re
 def find_sku(sku, skus):
     return len(list(re.finditer(sku, skus)))
 
+def count_skus(skus):
+    unique_skus = set(skus)
+    res = {}
+    for sku in skus:
+        res[sku] = skus.count(sku)
+    return res
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
 
-    allowed_items = {"A": 50,
-                     "B": 30,
-                     "C": 20,
-                     "D": 15,
-                     "E": 40}
+    sku_prices = {"A": 50,
+                  "B": 30,
+                  "C": 20,
+                  "D": 15,
+                  "E": 40}
 
     total_price = 0
 
+    # Check for invalid characters.
     if not set(skus).issubset(set(allowed_items.keys())):
         return -1
 
@@ -50,3 +58,4 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
