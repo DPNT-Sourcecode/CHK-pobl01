@@ -13,6 +13,8 @@ def checkout(skus):
                      "D": 15,
                      "E": 40}
 
+    total_price = 0
+
     if not set(skus).issubset(set(allowed_items.keys())):
         return -1
 
@@ -36,11 +38,8 @@ def checkout(skus):
             item_price -= discount
 
         if sku == "E" and "B" in skus:
+            discound = allowed_items["B"] * (item_count // 2)
+            item_price -= discount
 
-    return price_a + price_b + price_c + price_d
-
-
-
-
-
-
+        total_price += item_price
+    return total_price
