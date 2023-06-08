@@ -72,8 +72,3 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
-
-
-
-
-
