@@ -18,6 +18,3 @@ def checkout(skus):
     if item_b >= 2:
         price_b -= 15
     return price_a + price_b + price_c + price_d
-
-
-
