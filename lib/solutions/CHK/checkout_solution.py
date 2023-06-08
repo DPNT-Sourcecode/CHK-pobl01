@@ -22,9 +22,13 @@ def checkout(skus):
 
         if sku == "A":
             discount_count = item_count // 5
+
             if discount_count > 0:
-                discound_a = 50 * discount_count
+                discound = 50 * discount_count
+                item_price -= discount
                 item_count -= discount_count * 5
+
+            discount_count = 20 * (item_count // 3)
                 break
 
     discound_a = 20 * (item_a // 3)
@@ -34,6 +38,7 @@ def checkout(skus):
     price_b -= discound_b
 
     return price_a + price_b + price_c + price_d
+
 
 
 
