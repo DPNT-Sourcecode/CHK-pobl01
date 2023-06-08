@@ -1,5 +1,8 @@
 import re
 
+def find_sku(sku, skus):
+    return len(list(re.finditer(sku, skus)))
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -8,10 +11,10 @@ def checkout(skus):
     if not set(skus).issubset(allowed_items):
         return -1
 
-    item_a = len(list(re.finditer("A", skus)))
-    item_b = len(list(re.finditer("B", skus)))
-    item_c = len(list(re.finditer("C", skus)))
-    item_d = len(list(re.finditer("D", skus)))
+    item_a = find_sku("A", skus)
+    item_b = find_sku("B", skus)
+    item_c = find_sku("C", skus)
+    item_d = find_sku("D", skus)
 
     price_a = item_a * 50
     price_b = item_b * 30
@@ -24,3 +27,4 @@ def checkout(skus):
         price_b -= 15 * (item_b // 2)
 
     return price_a + price_b + price_c + price_d
+
