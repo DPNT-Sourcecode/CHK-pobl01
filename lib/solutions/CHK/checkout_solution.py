@@ -39,8 +39,15 @@ def checkout(skus):
 
         if sku == "E" and "B" in skus:
             discount = allowed_items["B"] * (item_count // 2)
+            print("discount",discount)
+            print("item price",item_price)
             item_price -= discount
+            print("item price",item_price)
 
         total_price += item_price
     return total_price
+
+out = checkout("EEEEBB")
+print(out)
+
 
