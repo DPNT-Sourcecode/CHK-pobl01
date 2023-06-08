@@ -14,48 +14,54 @@ def count_skus(skus):
 # skus = unicode string
 def checkout(skus):
 
-    sku_prices = {"A": 50,
-                  "B": 30,
-                  "C": 20,
-                  "D": 15,
-                  "E": 40}
+    sku_price_table = {"A": 50,
+                       "B": 30,
+                       "C": 20,
+                       "D": 15,
+                       "E": 40}
 
     total_price = 0
 
     # Check for invalid characters.
-    if not set(skus).issubset(set(allowed_items.keys())):
+    if not set(skus).issubset(set(sku_price_table.keys())):
         return -1
 
-    for sku in allowed_items:
-        item_count = find_sku(sku, skus)
-        item_price = item_count * allowed_items[sku]
-        print(f"item price {sku}",item_price)
+    sku_count = count_skus(skus)
+    print(sku_count)
 
-        if sku == "A":
-            discount_count = item_count // 5
+    sku_
 
-            if discount_count > 0:
-                discount = 50 * discount_count
-                item_price -= discount
-                item_count -= discount_count * 5
+    #for sku in allowed_items:
+    #    item_count = find_sku(sku, skus)
+    #    item_price = item_count * allowed_items[sku]
+    #    print(f"item price {sku}",item_price)
 
-            discount = 20 * (item_count // 3)
-            item_price -= discount
+    #    if sku == "A":
+    #        discount_count = item_count // 5
 
-        if sku == "B":
-            discount = 15 * (item_count // 2)
-            item_price -= discount
+    #        if discount_count > 0:
+    #            discount = 50 * discount_count
+    #            item_price -= discount
+    #            item_count -= discount_count * 5
 
-        if sku == "E" and "B" in skus:
-            discount = allowed_items["B"] * (item_count // 2)
-            #print("discount",discount)
-            #print("item price",item_price)
-            item_price -= discount
-            #print("item price",item_price)
+    #        discount = 20 * (item_count // 3)
+    #        item_price -= discount
 
-        total_price += item_price
+    #    if sku == "B":
+    #        discount = 15 * (item_count // 2)
+    #        item_price -= discount
+
+    #    if sku == "E" and "B" in skus:
+    #        discount = allowed_items["B"] * (item_count // 2)
+    #        #print("discount",discount)
+    #        #print("item price",item_price)
+    #        item_price -= discount
+    #        #print("item price",item_price)
+
+    #    total_price += item_price
     return total_price
 
 out = checkout("EEEEBB")
 print(out)
+
 
