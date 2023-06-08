@@ -40,7 +40,7 @@ def checkout(skus):
         total_price += sku_prices[sku]
     print(sku_prices)
 
-    discount_a = sku_count["A"] // discount_a_threshold
+    discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
     calculate_discount()
     #for sku in allowed_items:
     #    item_count = find_sku(sku, skus)
@@ -74,5 +74,6 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
