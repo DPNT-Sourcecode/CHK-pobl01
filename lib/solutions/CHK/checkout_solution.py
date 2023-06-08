@@ -7,8 +7,14 @@ def find_sku(sku, skus):
 # skus = unicode string
 def checkout(skus):
 
+    allowed_items = {"A": 50,
+                     "B": 30,
+                     "C": 20,
+                     "D": 15,
+                     "E": 40}
+
     allowed_items = set("ABCD")
-    if not set(skus).issubset(allowed_items):
+    if not set(skus).issubset(set(allowed_items.keys())):
         return -1
 
     item_a = find_sku("A", skus)
@@ -28,3 +34,4 @@ def checkout(skus):
     price_b -= discound_b
 
     return price_a + price_b + price_c + price_d
+
