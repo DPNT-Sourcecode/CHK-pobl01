@@ -21,12 +21,13 @@ def checkout(skus):
     price_c = item_c * 20
     price_d = item_d * 15
 
-    discound_a = find_sku("AAA", skus)
+    discound_a = find_sku("A{3}", skus)
     price_a -= 20 * discound_a
 
-    discound_b = find_sku("BB", skus)
+    discound_b = find_sku("B{2}", skus)
     price_b -= 15 * discound_b
 
     return price_a + price_b + price_c + price_d
+
 
 
