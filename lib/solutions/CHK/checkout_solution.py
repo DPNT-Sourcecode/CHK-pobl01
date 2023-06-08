@@ -50,7 +50,7 @@ def checkout(skus):
         sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
         #sku_count["A"] -= discount_three_a
 
-    if "E" in sku_count:
+    if "E" in sku_count and "B" in sku_count:
         discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
         sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
         if sku_prices["B"] < 0:
@@ -94,5 +94,6 @@ def checkout(skus):
     #    total_price += item_price
     return total_price
 
-#out = checkout("EEEEBB")
-#print(out)
+out = checkout("E")
+print(out)
+
