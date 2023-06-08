@@ -20,6 +20,8 @@ def checkout(skus):
                        "D": 15,
                        "E": 40}
 
+    sku_prices = {}
+
     total_price = 0
 
     # Check for invalid characters.
@@ -29,7 +31,8 @@ def checkout(skus):
     sku_count = count_skus(skus)
     print(sku_count)
 
-    sku_
+    for sku in sku_count:
+        break
 
     #for sku in allowed_items:
     #    item_count = find_sku(sku, skus)
@@ -63,5 +66,6 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
