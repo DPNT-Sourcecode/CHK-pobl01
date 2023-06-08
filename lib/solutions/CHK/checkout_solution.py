@@ -3,6 +3,11 @@ import re
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+
+    allowed_items = set("A", "B", "C", "D")
+    if set(skus) not in allowed_items:
+        return -1
+
     item_a = len(list(re.finditer("A", skus)))
     item_b = len(list(re.finditer("B", skus)))
     item_c = len(list(re.finditer("C", skus)))
@@ -18,3 +23,4 @@ def checkout(skus):
     if item_b >= 2:
         price_b -= 15
     return price_a + price_b + price_c + price_d
+
