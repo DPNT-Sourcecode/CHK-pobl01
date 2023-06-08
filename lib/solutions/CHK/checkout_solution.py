@@ -13,14 +13,12 @@ def checkout(skus):
                      "D": 15,
                      "E": 40}
 
-    allowed_items = set("ABCD")
     if not set(skus).issubset(set(allowed_items.keys())):
         return -1
 
-    item_a = find_sku("A", skus)
-    item_b = find_sku("B", skus)
-    item_c = find_sku("C", skus)
-    item_d = find_sku("D", skus)
+    for sku in allowed_items:
+        item_count = find_sku(sku, skus)
+        item_price = item_count * allowed_items[sku]
 
     price_a = item_a * 50
     price_b = item_b * 30
@@ -34,4 +32,5 @@ def checkout(skus):
     price_b -= discound_b
 
     return price_a + price_b + price_c + price_d
+
 
