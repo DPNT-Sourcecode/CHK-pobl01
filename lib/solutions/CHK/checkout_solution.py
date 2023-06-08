@@ -35,13 +35,10 @@ def checkout(skus):
             discound = 15 * (item_count // 2)
             item_price -= discount
 
-    discound_a = 20 * (item_a // 3)
-    price_a -= discound_a
-
-    discound_b = 15 * (item_b // 2)
-    price_b -= discound_b
+        if sku == "E" and "B" in skus:
 
     return price_a + price_b + price_c + price_d
+
 
 
 
