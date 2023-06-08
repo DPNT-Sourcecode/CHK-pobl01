@@ -94,8 +94,9 @@ def checkout(skus):
     #    total_price += item_price
     return total_price
 
-out = checkout("EEEEBB")
-print(out)
+#out = checkout("EEEEBB")
+#print(out)
+
 
 
 
