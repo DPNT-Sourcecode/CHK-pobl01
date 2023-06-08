@@ -18,10 +18,11 @@ def checkout(skus):
     price_c = item_c * 20
     price_d = item_d * 15
 
-    if item_a >= 3:
-        price_a -= 20
+    if item_a % 3 == 0:
+        price_a -= 20 * (item_a / 3)
     if item_b >= 2:
         price_b -= 15
     return price_a + price_b + price_c + price_d
+
 
 
