@@ -3,6 +3,9 @@ import re
 def find_sku(sku, skus):
     return len(list(re.finditer(sku, skus)))
 
+def calculate_discount(discount, sku_count, discount_threshold):
+    return discount * (sku_count // discount_threshold)
+
 def count_skus(skus):
     unique_skus = set(skus)
     res = {}
@@ -36,6 +39,7 @@ def checkout(skus):
         total_price += sku_prices[sku]
     print(sku_prices)
 
+    calculate_discount()
     #for sku in allowed_items:
     #    item_count = find_sku(sku, skus)
     #    item_price = item_count * allowed_items[sku]
@@ -68,6 +72,7 @@ def checkout(skus):
 
 out = checkout("EEEEBB")
 print(out)
+
 
 
 
