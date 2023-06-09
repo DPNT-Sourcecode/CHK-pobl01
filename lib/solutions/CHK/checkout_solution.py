@@ -25,7 +25,7 @@ def checkout(skus):
                        "F": 10}
 
     discount_thresholds = {"fiveAs": 5, "threeAs": 3, "twoBs": 2, "twoEs": 2, "threeFs": 3}
-    discount_rates = {"fiveAs": 50, "threeAs": 20, "twoBs": 15, "twoEs": sku_price_table["B"], "twoFs": sku_price_table["F"]}
+    discount_rates = {"fiveAs": 50, "threeAs": 20, "twoBs": 15, "twoEs": sku_price_table["B"], "threeFs": sku_price_table["F"]}
     sku_prices = {}
 
     total_price = 0
@@ -60,9 +60,11 @@ def checkout(skus):
         sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
 
     if "F" in sku_count:
-        discount_two_f = sku_count["F"] // discount_thresholds["twoBs"]
+        discount_two_f = sku_count["F"] // discount_thresholds["threeFs"]
+        sku_prices["F"] -= discount_rates["threeFs"] * discount_two_f
 
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
