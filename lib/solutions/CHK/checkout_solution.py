@@ -84,6 +84,8 @@ def checkout(skus):
                       "twoVs": 10}
     sku_prices = {}
 
+    any_three_discount = set("S","T","X","Y","Z")
+
     total_price = 0
 
     # Check for invalid characters.
@@ -165,6 +167,10 @@ def checkout(skus):
         remaining_v = sku_count["V"] - disc_freq_three_v * discount_thresholds["three"]
         sku_prices["V"] -= calculate_discount_quick(remaining_v, discount_thresholds["two"], discount_rates["twoVs"])
 
+    if any([sku in any_three_discount for sku in sku_count]):
+        pass
+
     total_price = sum(sku_prices.values())
 
     return total_price
+
