@@ -136,7 +136,13 @@ def checkout(skus):
         sku_prices["P"] -= calculate_discount_quick(sku_count["P"], discount_thresholds["five"], discount_rate["fivePs"])
 
     if "R" in sku_count and "Q" in sku_count:
-        pass # 3r one q free (apply before q discount)
+        disc_freq_three_r = calculate_discount_frequency(sku_count["R"], discount_thresholds["three"])
+        discount_three_r = calculate_discount(disc_freq_three_r, discount_rate["threeRs"])
+        sku_prices["Q"] -= discount_three_r
+
+        if sku_prices["Q"] < 0:
+            sku_prices["Q"] = 0
+        sku_count["Q"] -= disc_freq_three_r
 
     if "Q" in sku_count:
         sku_prices["Q"] -= calculate_discount_quick(sku_count["Q"], discount_thresholds["three"], discount_rate["threeQs"])
@@ -155,6 +161,7 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
