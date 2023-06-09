@@ -43,23 +43,26 @@ def checkout(skus):
 
     if "A" in sku_count:
 	sku_prices["A"] -= calculate_discount(sku_count["A"], discount_thresholds["fiveAs"], discount_rates["fiveAs"])
-        discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
-        sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
+        #discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
+        #sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
 
         remaining_a = sku_count["A"] - discount_five_a * discount_thresholds["fiveAs"]
-        discount_three_a = remaining_a // discount_thresholds["threeAs"]
-        sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
+	sku_prices["A"] -= calculate_discount(remaining_a, discount_thresholds["threeAs"], discount_rates["threeAs"])
+        #discount_three_a = remaining_a // discount_thresholds["threeAs"]
+        #sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
 
     if "E" in sku_count and "B" in sku_count:
-        discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
-        sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
+	sku_prices["B"] -= calculate_discount(sku_count["E"], discount_thresholds["twoEs"], discount_rates["twoEs"])
+        #discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
+        #sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
         if sku_prices["B"] < 0:
             sku_prices["B"] = 0
         sku_count["B"] -= discount_two_e
 
     if "B" in sku_count:
-        discount_two_b = sku_count["B"] // discount_thresholds["twoBs"]
-        sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
+	sku_prices["B"] -= calculate_discount(sku_count["B"], discount_thresholds["twoBs"], discount_rates["twoBs"])
+        #discount_two_b = sku_count["B"] // discount_thresholds["twoBs"]
+        #sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
 
     if "F" in sku_count:
         discount_two_f = sku_count["F"] // discount_thresholds["threeFs"]
@@ -68,6 +71,7 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
