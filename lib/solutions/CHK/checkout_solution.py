@@ -10,15 +10,6 @@ def calculate_discount_quick(sku_count, discount_threshold, discount_rate):
     disc_freq = calculate_discount_frequency(sku_count, discount_threshold)
     return calculate_discount(disc_freq, discount_rate)
 
-def multi_pack_discount(sku_count, discount_threshold, discount_rates):
-    disc_freq_five_a = calculate_discount_frequency(sku_count["A"], discount_thresholds["five"])
-    discount_five_a = calculate_discount(disc_freq_five_a, discount_rates["fiveAs"])
-    sku_prices["A"] -= discount_five_a
-
-    remaining_a = sku_count["A"] - disc_freq_five_a * discount_thresholds["five"]
-    sku_prices["A"] -= calculate_discount_quick(remaining_a, discount_thresholds["three"], discount_rates["threeAs"])
-    pass
-
 def count_skus(skus):
     unique_skus = set(skus)
     res = {}
@@ -169,4 +160,3 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
-
