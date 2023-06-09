@@ -1,6 +1,8 @@
 import re
 
-def discount_a():
+def discount_a(sku_count, disc_thresh, disc_rate):
+    disc_freq = calculate_drscount_frequency(sku_count, disc_thresh)
+    discount = calculate_discount(disc_freq, disc_rate)
     return
 
 def find_sku(sku, skus):
@@ -97,4 +99,5 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
