@@ -69,8 +69,11 @@ def checkout(skus):
         total_price += sku_prices[sku]
 
     if "A" in sku_count:
-        sku_prices["A"] -= calculate_discount(sku_count["A"], discount_thresholds["fiveAs"], discount_rates["fiveAs"])
-        discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]  # TODO
+	disc_freq_five_a = calculate_discount_frequency(sku_count["A"], discount_thresholds["fiveAs"])
+	discount_five_a = calculate_discount(disc_freq_five_a, discount_rate["fiveAs"])
+	sku_prices["A"] -= discount_five_a
+        #sku_prices["A"] -= calculate_discount(sku_count["A"], discount_thresholds["fiveAs"], discount_rates["fiveAs"])
+        #discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]  # TODO
         #sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
 
         remaining_a = sku_count["A"] - discount_five_a * discount_thresholds["fiveAs"]  # TODO discount_five_a is missing
@@ -99,5 +102,6 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
