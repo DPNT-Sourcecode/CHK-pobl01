@@ -76,8 +76,11 @@ def checkout(skus):
         #discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]  # TODO
         #sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
 
-        remaining_a = sku_count["A"] - discount_five_a * discount_thresholds["fiveAs"]  # TODO discount_five_a is missing
-        sku_prices["A"] -= calculate_discount(remaining_a, discount_thresholds["threeAs"], discount_rates["threeAs"])
+        remaining_a = sku_count["A"] - disc_freq_five_a * discount_thresholds["fiveAs"]
+	disc_freq_three_a = calculate_discount_frequency(sku_count["A"], discount_thresholds["threeAs"])
+	discount_three_a = calculate_discount(disc_freq_three_a, discount_rate["threeAs"])
+	sku_prices["A"] -= discount_three_a
+        #sku_prices["A"] -= calculate_discount(remaining_a, discount_thresholds["threeAs"], discount_rates["threeAs"])
         #discount_three_a = remaining_a // discount_thresholds["threeAs"]
         #sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
 
@@ -102,6 +105,7 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
