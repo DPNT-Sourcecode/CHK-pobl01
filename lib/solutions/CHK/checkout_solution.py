@@ -23,7 +23,27 @@ def checkout(skus):
                        "C": 20,
                        "D": 15,
                        "E": 40,
-                       "F": 10}
+                       "F": 10,
+                       "G": 20,
+                       "H": 10,
+                       "I": 35,
+                       "J": 60,
+                       "K": 80,
+                       "L": 90,
+                       "M": 15,
+                       "N": 40,
+                       "O": 10,
+                       "P": 50,
+                       "Q": 30,
+                       "R": 50,
+                       "S": 30,
+                       "T": 20,
+                       "U": 40,
+                       "V": 50,
+                       "W": 20,
+                       "X": 90,
+                       "Y": 10,
+                       "Z": 50}
 
     discount_thresholds = {"fiveAs": 5, "threeAs": 3, "twoBs": 2, "twoEs": 2, "threeFs": 3}
     discount_rates = {"fiveAs": 50, "threeAs": 20, "twoBs": 15, "twoEs": sku_price_table["B"], "threeFs": sku_price_table["F"]}
@@ -42,36 +62,37 @@ def checkout(skus):
         total_price += sku_prices[sku]
 
     if "A" in sku_count:
-	sku_prices["A"] -= calculate_discount(sku_count["A"], discount_thresholds["fiveAs"], discount_rates["fiveAs"])
+        sku_prices["A"] -= calculate_discount(sku_count["A"], discount_thresholds["fiveAs"], discount_rates["fiveAs"])
         #discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
         #sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
 
-        remaining_a = sku_count["A"] - discount_five_a * discount_thresholds["fiveAs"]
-	sku_prices["A"] -= calculate_discount(remaining_a, discount_thresholds["threeAs"], discount_rates["threeAs"])
+        remaining_a = sku_count["A"] - discount_five_a * discount_thresholds["fiveAs"]  # TODO discount_five_a is missing
+        sku_prices["A"] -= calculate_discount(remaining_a, discount_thresholds["threeAs"], discount_rates["threeAs"])
         #discount_three_a = remaining_a // discount_thresholds["threeAs"]
         #sku_prices["A"] -= discount_rates["threeAs"] * discount_three_a
 
     if "E" in sku_count and "B" in sku_count:
-	sku_prices["B"] -= calculate_discount(sku_count["E"], discount_thresholds["twoEs"], discount_rates["twoEs"])
+        sku_prices["B"] -= calculate_discount(sku_count["E"], discount_thresholds["twoEs"], discount_rates["twoEs"])
         #discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
         #sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
         if sku_prices["B"] < 0:
             sku_prices["B"] = 0
-        sku_count["B"] -= discount_two_e
+        sku_count["B"] -= discount_two_e  # TODO missing discount
 
     if "B" in sku_count:
-	sku_prices["B"] -= calculate_discount(sku_count["B"], discount_thresholds["twoBs"], discount_rates["twoBs"])
+        sku_prices["B"] -= calculate_discount(sku_count["B"], discount_thresholds["twoBs"], discount_rates["twoBs"])
         #discount_two_b = sku_count["B"] // discount_thresholds["twoBs"]
         #sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
 
     if "F" in sku_count:
-	sku_prices["F"] -= calculate_discount(sku_count["F"], discount_thresholds["threeFs"], discount_rates["threeFs"])
+        sku_prices["F"] -= calculate_discount(sku_count["F"], discount_thresholds["threeFs"], discount_rates["threeFs"])
         #discount_two_f = sku_count["F"] // discount_thresholds["threeFs"]
         #sku_prices["F"] -= discount_rates["threeFs"] * discount_two_f
 
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
