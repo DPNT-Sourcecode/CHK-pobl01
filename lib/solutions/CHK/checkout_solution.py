@@ -79,25 +79,21 @@ def checkout(skus):
 	disc_freq_two_e = calculate_discount_frequency(sku_count["E"], discount_thresholds["twoEs"])
 	discount_two_e = calculate_discount(disc_freq_two_e, discount_rate["twoEs"])
         sku_prices["B"] -= discount_two_e
-        #discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]  #TODO
-        #sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
+
         if sku_prices["B"] < 0:
             sku_prices["B"] = 0
         sku_count["B"] -= disc_freq_two_e
 
     if "B" in sku_count:
-        sku_prices["B"] -= calculate_discount(sku_count["B"], discount_thresholds["twoBs"], discount_rates["twoBs"])
-        #discount_two_b = sku_count["B"] // discount_thresholds["twoBs"]
-        #sku_prices["B"] -= discount_rates["twoBs"] * discount_two_b
+	sku_prices["B"] -= calculate_discount_quick(sku_count["B"], discount_thresholds["twoBs"], discount_rate["twoBs"])
 
     if "F" in sku_count:
-        sku_prices["F"] -= calculate_discount(sku_count["F"], discount_thresholds["threeFs"], discount_rates["threeFs"])
-        #discount_two_f = sku_count["F"] // discount_thresholds["threeFs"]
-        #sku_prices["F"] -= discount_rates["threeFs"] * discount_two_f
+	sku_prices["F"] -= calculate_discount_quick(sku_count["F"], discount_thresholds["threeFs"], discount_rate["threeFs"])
 
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
