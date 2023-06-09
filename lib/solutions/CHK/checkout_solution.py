@@ -168,6 +168,3 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
-
-
-
