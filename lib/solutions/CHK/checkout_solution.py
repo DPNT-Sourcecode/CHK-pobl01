@@ -1,8 +1,5 @@
 import re
 
-def find_sku(sku, skus):
-    return len(list(re.finditer(sku, skus)))
-
 def calculate_discount_frequency(sku_count, discount_threshold):
     return sku_count // discount_threshold
 
@@ -12,6 +9,15 @@ def calculate_discount(discount_freq, discount_rate):
 def calculate_discount_quick(sku_count, discount_threshold, discount_rate):
     disc_freq = calculate_discount_frequency(sku_count, discount_threshold)
     return calculate_discount(disc_freq, discount_rate)
+
+def multi_pack_discount(sku_count, discount_threshold, discount_rates):
+    disc_freq_five_a = calculate_discount_frequency(sku_count["A"], discount_thresholds["five"])
+    discount_five_a = calculate_discount(disc_freq_five_a, discount_rates["fiveAs"])
+    sku_prices["A"] -= discount_five_a
+
+    remaining_a = sku_count["A"] - disc_freq_five_a * discount_thresholds["five"]
+    sku_prices["A"] -= calculate_discount_quick(remaining_a, discount_thresholds["three"], discount_rates["threeAs"])
+    pass
 
 def count_skus(skus):
     unique_skus = set(skus)
@@ -56,16 +62,6 @@ def checkout(skus):
                            "four": 4,
                            "five": 5,
                            "ten": 10}
-                        #{"fiveAs": 5,
-                          # "threeAs": 3,
-                          # "twoBs": 2,
-                          # "twoEs": 2,
-                          # "threeFs": 3,
-                          # "fiveHs": 5,
-                          # "tenHs": 10,
-                          # "twoKs": 2,
-                          # "threeNs": 3,
-                          # "fivePs": 5}
 
     discount_rates = {"fiveAs": 50,
                       "threeAs": 20,
@@ -173,3 +169,4 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
