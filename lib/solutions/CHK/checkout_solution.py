@@ -91,11 +91,30 @@ def checkout(skus):
         sku_prices["F"] -= calculate_discount_quick(sku_count["F"], discount_thresholds["threeFs"], discount_rate["threeFs"])
 
     if "H" in sku_count:
+        pass # 10h -20 then 5h -5
+
+    if "K" in sku_count:
+        pass # 2k -10
+
+    if "N" in sku_count:
+        pass # 3n one m free
+
+    if "P" in sku_count:
         pass
 
-    if "F" in sku_count:
+    if "Q" in sku_count:
+        pass
+
+    if "R" in sku_count:
+        pass
+
+    if "U" in sku_count:
+        pass
+
+    if "V" in sku_count:
         pass
 
     total_price = sum(sku_prices.values())
 
     return total_price
+
