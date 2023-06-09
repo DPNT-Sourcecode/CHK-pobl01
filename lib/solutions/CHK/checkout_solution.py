@@ -58,7 +58,9 @@ def checkout(skus):
                            "threeFs": 3,
                            "fiveHs": 5,
                            "tenHs": 10,
-                           "twoKs": 2}
+                           "twoKs": 2,
+                           "threeNs": 3,
+                           "fivePs": 5}
 
     discount_rates = {"fiveAs": 50, "threeAs": 20, "twoBs": 15, "twoEs": sku_price_table["B"], "threeFs": sku_price_table["F"]}
     sku_prices = {}
@@ -125,7 +127,3 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
-
-
-
-
