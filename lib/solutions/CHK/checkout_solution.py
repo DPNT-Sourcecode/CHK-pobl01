@@ -63,7 +63,7 @@ def checkout(skus):
 
     if "A" in sku_count:
         sku_prices["A"] -= calculate_discount(sku_count["A"], discount_thresholds["fiveAs"], discount_rates["fiveAs"])
-        #discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]
+        discount_five_a = sku_count["A"] // discount_thresholds["fiveAs"]  # TODO
         #sku_prices["A"] -= discount_rates["fiveAs"] * discount_five_a
 
         remaining_a = sku_count["A"] - discount_five_a * discount_thresholds["fiveAs"]  # TODO discount_five_a is missing
@@ -73,7 +73,7 @@ def checkout(skus):
 
     if "E" in sku_count and "B" in sku_count:
         sku_prices["B"] -= calculate_discount(sku_count["E"], discount_thresholds["twoEs"], discount_rates["twoEs"])
-        #discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]
+        discount_two_e = sku_count["E"] // discount_thresholds["twoEs"]  #TODO
         #sku_prices["B"] -= discount_rates["twoEs"] * discount_two_e
         if sku_prices["B"] < 0:
             sku_prices["B"] = 0
@@ -92,6 +92,7 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
