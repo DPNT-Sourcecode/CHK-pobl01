@@ -68,16 +68,16 @@ def checkout(skus):
         total_price += sku_prices[sku]
 
     if "A" in sku_count:
-	disc_freq_five_a = calculate_discount_frequency(sku_count["A"], discount_thresholds["fiveAs"])
-	discount_five_a = calculate_discount(disc_freq_five_a, discount_rate["fiveAs"])
-	sku_prices["A"] -= discount_five_a
+        disc_freq_five_a = calculate_discount_frequency(sku_count["A"], discount_thresholds["fiveAs"])
+        discount_five_a = calculate_discount(disc_freq_five_a, discount_rate["fiveAs"])
+        sku_prices["A"] -= discount_five_a
 
         remaining_a = sku_count["A"] - disc_freq_five_a * discount_thresholds["fiveAs"]
-	sku_prices["A"] -= calculate_discount_quick(remaining_a, discount_thresholds["threeAs"], discount_rate["threeAs"])
+        sku_prices["A"] -= calculate_discount_quick(remaining_a, discount_thresholds["threeAs"], discount_rate["threeAs"])
 
     if "E" in sku_count and "B" in sku_count:
-	disc_freq_two_e = calculate_discount_frequency(sku_count["E"], discount_thresholds["twoEs"])
-	discount_two_e = calculate_discount(disc_freq_two_e, discount_rate["twoEs"])
+        disc_freq_two_e = calculate_discount_frequency(sku_count["E"], discount_thresholds["twoEs"])
+        discount_two_e = calculate_discount(disc_freq_two_e, discount_rate["twoEs"])
         sku_prices["B"] -= discount_two_e
 
         if sku_prices["B"] < 0:
@@ -85,14 +85,15 @@ def checkout(skus):
         sku_count["B"] -= disc_freq_two_e
 
     if "B" in sku_count:
-	sku_prices["B"] -= calculate_discount_quick(sku_count["B"], discount_thresholds["twoBs"], discount_rate["twoBs"])
+        sku_prices["B"] -= calculate_discount_quick(sku_count["B"], discount_thresholds["twoBs"], discount_rate["twoBs"])
 
     if "F" in sku_count:
-	sku_prices["F"] -= calculate_discount_quick(sku_count["F"], discount_thresholds["threeFs"], discount_rate["threeFs"])
+        sku_prices["F"] -= calculate_discount_quick(sku_count["F"], discount_thresholds["threeFs"], discount_rate["threeFs"])
 
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
