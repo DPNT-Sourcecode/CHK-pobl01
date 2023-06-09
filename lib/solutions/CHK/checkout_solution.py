@@ -102,20 +102,21 @@ def checkout(skus):
     if "P" in sku_count:
         pass # 5p -50
 
-    if "Q" in sku_count:
-        pass # 3q -10
-
     if "R" in sku_count:
         pass # 3r one q free (apply before q discount)
+
+    if "Q" in sku_count:
+        pass # 3q -10
 
     if "U" in sku_count:
         pass # 3u one u free
 
     if "V" in sku_count:
-        pass # 3v
+        pass # 3v -20 then 3v -10
 
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
