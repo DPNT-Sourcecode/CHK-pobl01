@@ -90,14 +90,12 @@ def checkout(skus):
     if "F" in sku_count:
         sku_prices["F"] -= calculate_discount_quick(sku_count["F"], discount_thresholds["threeFs"], discount_rate["threeFs"])
 
+    if "H" in sku_count:
+        pass
+
+    if "F" in sku_count:
+        pass
+
     total_price = sum(sku_prices.values())
 
     return total_price
-
-
-
-
-
-
-
-
