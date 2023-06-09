@@ -123,14 +123,14 @@ def checkout(skus):
         discount_ten_h = calculate_discount(disc_freq_ten_h, discount_rate["tenHs"])
         sku_prices["H"] -= discount_ten_h
 
-        remaining_a = sku_count["A"] - disc_freq_five_a * discount_thresholds["five"]
-        sku_prices["A"] -= calculate_discount_quick(remaining_a, discount_thresholds["three"], discount_rate["three"])
-        pass # 10h -20 then 5h -5
+        remaining_h = sku_count["H"] - disc_freq_ten_h * discount_thresholds["ten"]
+        sku_prices["H"] -= calculate_discount_quick(remaining_h, discount_thresholds["five"], discount_rate["fiveHs"])
 
     if "K" in sku_count:
-        pass # 2k -10
+        sku_prices["K"] -= calculate_discount_quick(sku_count["K"], discount_thresholds["two"], discount_rate["twoKs"])
 
     if "N" in sku_count:
+        sku_prices["K"] -= calculate_discount_quick(sku_count["K"], discount_thresholds["two"], discount_rate["twoKs"])
         pass # 3n one m free
 
     if "P" in sku_count:
@@ -151,6 +151,7 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
 
 
 
