@@ -71,7 +71,7 @@ def checkout(skus):
                       "twoVs": 10}
     sku_prices = {}
 
-    any_three_discount = set("STXYZ")
+    any_three_discount = ["ZSTYX"]  # Sorted by price in descending order
 
     total_price = 0
 
@@ -162,6 +162,7 @@ def checkout(skus):
     if any_three_discount_skus:
         discount_freq = sum(any_three_discount_skus.values()) // 3 # threshold for item
         for _ in range(discount_freq):
+            pass
 
     total_price = sum(sku_prices.values())
 
@@ -169,6 +170,7 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
 
 
 
