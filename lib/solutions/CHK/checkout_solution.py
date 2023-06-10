@@ -172,13 +172,14 @@ def checkout(skus):
                     any_three_discount_skus[sku] -= total_disc_skus
                 else:
                     any_three_discount_skus[sku] -= (total_disc_skus-left_to_remove)
+        discount = sum(sku_prices.values()) - any_three_discount_skus[sku]
 
-    print(sku_prices)
     total_price = sum(sku_prices.values())
 
     return total_price
 
 out = checkout("STXYZ")
 print(out)
+
 
 
