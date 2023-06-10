@@ -167,7 +167,7 @@ def checkout(skus):
         any_three_discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
         # for each discount remove items that dont get a discount
         for _ in range(any_three_discount_freq):
-            breakpoint()
+            #breakpoint()
             for sku in any_three_discount:
                 left_to_remove = total_disc_skus - any_three_discount_skus[sku]
                 if left_to_remove < 0:
@@ -189,3 +189,4 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
