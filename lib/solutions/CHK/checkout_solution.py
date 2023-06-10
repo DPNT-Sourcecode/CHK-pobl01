@@ -163,6 +163,7 @@ def checkout(skus):
         discount_budget = 3
         while sum(any_three_discount_skus.values()) % discount_budget == 0:
             for sku in any_three_discount_skus:
+                discount_budget -= any_three_discount_skus[sku]
                 pass
 
         any_three_disc_rate = 45
@@ -192,6 +193,7 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
 
 
 
