@@ -163,9 +163,9 @@ def checkout(skus):
     if any_three_discount_skus:
         total_disc_skus = 3
         # how many times will the discount be applied? 
-        discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
+        any_three_discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
         # for each discount remove items that dont get a discount
-        for _ in range(discount_freq):
+        for _ in range(any_three_discount_freq):
             for sku in any_three_discount:
                 left_to_remove = total_disc_skus - any_three_discount_skus[sku]
                 if left_to_remove < 0:
@@ -175,12 +175,17 @@ def checkout(skus):
         temp_price = sum([any_three_discount_skus[sku] * sku_price_table[sku] for sku in any_three_discount_skus])
         any_three_discount_price = sum(sku_prices.values()) - temp_price
 
-    total_price = sum(sku_prices.values())
+        total_price = sum(sku_prices.values())
+        total_price -= any_three_discount_price
+        total_price += 
+    else:
+        total_price = sum(sku_prices.values())
 
     return total_price
 
 out = checkout("STXYZ")
 print(out)
+
 
 
 
