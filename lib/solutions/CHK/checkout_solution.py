@@ -155,6 +155,7 @@ def checkout(skus):
         sku_prices["V"] -= calculate_discount_quick(remaining_v, discount_thresholds["two"], discount_rates["twoVs"])
 
     if any([sku in any_three_discount for sku in sku_count]):
+        discount_skus = {}
         pass
 
     total_price = sum(sku_prices.values())
@@ -163,3 +164,4 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
