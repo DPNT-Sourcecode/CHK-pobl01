@@ -159,7 +159,9 @@ def checkout(skus):
     for sku in sku_count:
         if sku in any_three_discount:
              any_three_discount_skus[sku] = sku_count[sku]
-    if 
+    if any_three_discount_skus:
+        discount_freq = sum(any_three_discount_skus.values()) // 3 # threshold for item
+        for _ in range(discount_freq):
 
     total_price = sum(sku_prices.values())
 
@@ -167,5 +169,6 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
 
 
