@@ -162,7 +162,10 @@ def checkout(skus):
              any_three_discount_skus[sku] = sku_count[sku]
 
     if any_three_discount_skus:
-        total_disc_skus = 3
+        discount_budget = 3
+        while sum(any_three_discount_skus.values()) % discount_budget == 0:
+            pass
+        #total_disc_skus = 3
         any_three_disc_rate = 45
         # how many times will the discount be applied? 
         any_three_discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
@@ -190,6 +193,7 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
 
 
 
