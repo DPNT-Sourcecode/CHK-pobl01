@@ -71,7 +71,7 @@ def checkout(skus):
                       "twoVs": 10}
     sku_prices = {}
 
-    any_three_discount = ["ZSTYX"]  # Sorted by price in descending order
+    any_three_discount = ["Z", "S", "T", "Y", "X"]  # Sorted by price in descending order
 
     total_price = 0
 
@@ -173,9 +173,11 @@ def checkout(skus):
                 else:
                     any_three_discount_skus[sku] -= (total_disc_skus-left_to_remove)
 
+    print(sku_prices)
     total_price = sum(sku_prices.values())
 
     return total_price
 
 out = checkout("STXYZ")
 print(out)
+
