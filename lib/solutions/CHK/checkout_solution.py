@@ -71,7 +71,7 @@ def checkout(skus):
                       "twoVs": 10}
     sku_prices = {}
 
-    any_three_discount = set("S","T","X","Y","Z")
+    any_three_discount = set("STXYZ")
 
     total_price = 0
 
@@ -160,3 +160,6 @@ def checkout(skus):
     total_price = sum(sku_prices.values())
 
     return total_price
+
+out = checkout("STXYZ")
+print(out)
