@@ -169,28 +169,29 @@ def checkout(skus):
 
         any_three_disc_rate = 45
         # how many times will the discount be applied? 
-        any_three_discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
+        #any_three_discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
         # for each discount remove items that dont get a discount
-        for _ in range(any_three_discount_freq):
-            breakpoint()
-            for sku in any_three_discount:
-                left_to_remove = total_disc_skus - any_three_discount_skus[sku]
-                if left_to_remove < 0:
-                    any_three_discount_skus[sku] -= total_disc_skus
-                else:
-                    any_three_discount_skus[sku] -= (total_disc_skus-left_to_remove)
-        temp_price = sum([any_three_discount_skus[sku] * sku_price_table[sku] for sku in any_three_discount_skus])
-        any_three_discount_price = sum(sku_prices.values()) - temp_price
+        #for _ in range(any_three_discount_freq):
+        #    breakpoint()
+        #    for sku in any_three_discount:
+        #        left_to_remove = total_disc_skus - any_three_discount_skus[sku]
+        #        if left_to_remove < 0:
+        #            any_three_discount_skus[sku] -= total_disc_skus
+        #        else:
+        #            any_three_discount_skus[sku] -= (total_disc_skus-left_to_remove)
+        #temp_price = sum([any_three_discount_skus[sku] * sku_price_table[sku] for sku in any_three_discount_skus])
+        #any_three_discount_price = sum(sku_prices.values()) - temp_price
 
-        print(sku_prices)
-        print(any_three_discount_skus)
-        total_price = sum(sku_prices.values())
-        total_price -= any_three_discount_price
-        total_price += any_three_disc_rate * any_three_discount_freq
-    else:
+        #print(sku_prices)
+        #print(any_three_discount_skus)
+        #total_price = sum(sku_prices.values())
+        #total_price -= any_three_discount_price
+        #total_price += any_three_disc_rate * any_three_discount_freq
+    #else:
         total_price = sum(sku_prices.values())
 
     return total_price
 
 out = checkout("STXYZ")
 print(out)
+
