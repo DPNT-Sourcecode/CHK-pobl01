@@ -162,7 +162,9 @@ def checkout(skus):
              any_three_discount_skus[sku] = sku_count[sku]
     if any_three_discount_skus:
         total_disc_skus = 3
+        # how many times will the discount be applied? 
         discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
+        # for each discount remove items util discount is applied
         for _ in range(discount_freq):
             for sku in any_three_discount:
                 left_to_remove = total_disc_skus - any_three_discount_skus[sku]
@@ -175,6 +177,7 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
 
 
 
