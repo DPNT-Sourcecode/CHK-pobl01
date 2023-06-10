@@ -189,11 +189,3 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
-
-
-
-
-
-
-
-
