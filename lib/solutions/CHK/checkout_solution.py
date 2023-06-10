@@ -161,6 +161,7 @@ def checkout(skus):
 
     if any_three_discount_skus:
         discount_budget = 3
+        any_three_discount_skus.sort(key=lambda sku: any_three_discount)
         while sum(any_three_discount_skus.values()) % discount_budget == 0:
             for sku in any_three_discount_skus:
                 remaining_budget = discount_budget - any_three_discount_skus[sku]
@@ -194,3 +195,4 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
