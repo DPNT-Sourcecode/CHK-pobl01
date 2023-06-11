@@ -168,13 +168,15 @@ def checkout(skus):
              any_three_discount_skus[sku] = sku_count[sku]
     print(any_three_discount_skus)
 
-    discount_budget = 3
     discount_freq = sum(any_three_discount_skus.values()) // 3
     print(discount_freq)
 
     for disc in range(discount_freq):
+        discount_budget = 3
         breakpoint()
         for sku in any_three_discount_skus:
+            if discount_budget == 0:
+                break
             count = min(discount_budget, any_three_discount_skus[sku])
             discount_budget -= count
             any_three_discount_skus[sku] -= count
@@ -216,6 +218,7 @@ def checkout(skus):
 
 out = checkout("STXYZT")
 print(out)
+
 
 
 
