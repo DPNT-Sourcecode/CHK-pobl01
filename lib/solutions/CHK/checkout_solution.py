@@ -154,7 +154,7 @@ def checkout(skus):
         remaining_v = sku_count["V"] - disc_freq_three_v * discount_thresholds["three"]
         sku_prices["V"] -= calculate_discount_quick(remaining_v, discount_thresholds["two"], discount_rates["twoVs"])
 
-    # Find oredered dict of discount items.
+    # Find oredered dict of discount items. (OK)
     # Calculate hou many imtes the discount must be applied.
     # For each time the discount must be applied:
     #  Find N most important items in discount items.
@@ -163,9 +163,10 @@ def checkout(skus):
     #  total price += discount rate (45) * number of times discount was applied
 
     any_three_discount_skus = {}
-    for sku in sku_count:
-        if sku in any_three_discount:
+    for sku in any_three_discount:
+        if sku in sku_count:
              any_three_discount_skus[sku] = sku_count[sku]
+    print(any_three_discount_skus)
 
     #if any_three_discount_skus:
     #    discount_budget = 3
@@ -203,3 +204,4 @@ def checkout(skus):
 
 out = checkout("STXYZ")
 print(out)
+
