@@ -155,8 +155,8 @@ def checkout(skus):
         sku_prices["V"] -= calculate_discount_quick(remaining_v, discount_thresholds["two"], discount_rates["twoVs"])
 
     # Find oredered dict of discount items. (OK)
-    # Calculate hou many imtes the discount must be applied.
-    # For each time the discount must be applied:
+    # Calculate hou many imtes the discount must be applied. (OK)
+    # For each time the discount must be applied: (OK)
     #  Find N most important items in discount items.
     #  Remove their price from total price.
     # if discount was applied:
@@ -167,6 +167,13 @@ def checkout(skus):
         if sku in sku_count:
              any_three_discount_skus[sku] = sku_count[sku]
     print(any_three_discount_skus)
+
+    discount_budget = 3
+    discount_freq = sum(any_three_discount_skus.values()) // 3
+    print(discount_freq)
+
+    for disc in range(discount_freq):
+        pass
 
     #if any_three_discount_skus:
     #    discount_budget = 3
@@ -202,6 +209,7 @@ def checkout(skus):
 
     return total_price
 
-out = checkout("STXYZ")
+out = checkout("STXYZT")
 print(out)
+
 
