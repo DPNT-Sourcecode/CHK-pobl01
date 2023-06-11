@@ -61,7 +61,7 @@ def checkout(skus):
                       "threeFs": sku_price_table["F"],
                       "tenHs": 20,
                       "fiveHs": 5,
-                      "twoKs": 10,
+                      "twoKs": 20,
                       "threeNs": sku_price_table["M"],
                       "fivePs": 50,
                       "threeRs": sku_price_table["Q"],
@@ -184,4 +184,5 @@ def checkout(skus):
     total_price += discount_rates["anyThree"] * discount_freq
 
     return total_price
+
 
