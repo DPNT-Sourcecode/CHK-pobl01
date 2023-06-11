@@ -154,21 +154,29 @@ def checkout(skus):
         remaining_v = sku_count["V"] - disc_freq_three_v * discount_thresholds["three"]
         sku_prices["V"] -= calculate_discount_quick(remaining_v, discount_thresholds["two"], discount_rates["twoVs"])
 
+    # Find oredered dict of discount items.
+    # Calculate hou many imtes the discount must be applied.
+    # For each time the discount must be applied:
+    #  Find N most important items in discount items.
+    #  Remove their price from total price.
+    # if discount was applied:
+    #  total price += discount rate (45) * number of times discount was applied
+
     any_three_discount_skus = {}
     for sku in sku_count:
         if sku in any_three_discount:
              any_three_discount_skus[sku] = sku_count[sku]
 
-    if any_three_discount_skus:
-        discount_budget = 3
-        any_three_discount_skus.sort(key=lambda sku: any_three_discount)
-        while sum(any_three_discount_skus.values()) % discount_budget == 0:
-            for sku in any_three_discount_skus:
-                remaining_budget = discount_budget - any_three_discount_skus[sku]
-                skus_to_discout = any_three_discount_skus[sku] - remaining_budget
-                pass
+    #if any_three_discount_skus:
+    #    discount_budget = 3
+    #    any_three_discount_skus.sort(key=lambda sku: any_three_discount)
+    #    while sum(any_three_discount_skus.values()) % discount_budget == 0:
+    #        for sku in any_three_discount_skus:
+    #            remaining_budget = discount_budget - any_three_discount_skus[sku]
+    #            skus_to_discout = any_three_discount_skus[sku] - remaining_budget
+    #            pass
 
-        any_three_disc_rate = 45
+    #    any_three_disc_rate = 45
         # how many times will the discount be applied? 
         #any_three_discount_freq = sum(any_three_discount_skus.values()) // total_disc_skus
         # for each discount remove items that dont get a discount
@@ -189,7 +197,7 @@ def checkout(skus):
         #total_price -= any_three_discount_price
         #total_price += any_three_disc_rate * any_three_discount_freq
     #else:
-        total_price = sum(sku_prices.values())
+    total_price = sum(sku_prices.values())
 
     return total_price
 
