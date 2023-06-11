@@ -160,8 +160,8 @@ def checkout(skus):
     # For each time the discount must be applied: (OK)
     #  Find N most important items in discount items. (OK)
     #  Remove their price from total price. (OK)
-    # if discount was applied:
-    #  total price += discount rate (45) * number of times discount was applied
+    # if discount was applied: (N/A)
+    #  total price += discount rate (45) * number of times discount was applied (OK)
 
     any_three_discount_skus = {}
     for sku in any_three_discount:
@@ -185,5 +185,3 @@ def checkout(skus):
 
     return total_price
 
-out = checkout("STXYZ")
-print(out)
