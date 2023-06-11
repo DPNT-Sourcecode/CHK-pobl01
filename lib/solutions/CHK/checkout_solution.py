@@ -68,7 +68,8 @@ def checkout(skus):
                       "threeQs": 10,
                       "threeUs": sku_price_table["U"],
                       "threeVs": 20,
-                      "twoVs": 10}
+                      "twoVs": 10,
+                      "anyThree": 45}
     sku_prices = {}
 
     any_three_discount = ["Z", "S", "T", "Y", "X"]  # Sorted by price in descending order
@@ -157,8 +158,8 @@ def checkout(skus):
     # Find oredered dict of discount items. (OK)
     # Calculate hou many imtes the discount must be applied. (OK)
     # For each time the discount must be applied: (OK)
-    #  Find N most important items in discount items.
-    #  Remove their price from total price.
+    #  Find N most important items in discount items. (OK)
+    #  Remove their price from total price. (OK)
     # if discount was applied:
     #  total price += discount rate (45) * number of times discount was applied
 
@@ -171,7 +172,6 @@ def checkout(skus):
 
     for disc in range(discount_freq):
         discount_budget = 3
-        breakpoint()
         for sku in any_three_discount_skus:
             if discount_budget == 0:
                 break
@@ -181,12 +181,9 @@ def checkout(skus):
             sku_prices[sku] -= count * sku_price_table[sku]
 
     total_price = sum(sku_prices.values())
+    total_price += discount_rates["anyThree"] * discount_freq
 
     return total_price
 
-
-
-
-
-
-
+out = checkout("STXYZ")
+print(out)
